@@ -1,0 +1,42 @@
+<div class="container">
+
+    <h2>Restaurants Types {{ title }} </h2>
+
+    <div class="pesquisar">
+        <div class="row">
+            <div class="input-field col s6">
+                <input value="" id="nameRestaurante" type="text" class="validate" [(ngModel)]="name" #restauranteInput>
+                <label class="active">Pesquisar Restaurant Type</label>
+            </div>
+        </div>
+
+        <button class="btn waves-effect waves-light pull-right btnRestaurante" (click)="get()">Cancelar</button>
+        <button class="btn waves-effect waves-light pull-right btnRestaurante" (click)="getByName(restauranteInput.value)">Pesquisar</button>
+        <button class="btn waves-effect waves-light pull-right btnRestaurante" routerLink="/restaurants-types/form">Cadastrar Restaurante tipo</button>
+
+    </div>
+
+    <div class="pesquisar">
+
+        <table class="highlight">
+            <thead>
+                <tr>
+                    <th style="width:100px;text-align:center">Ação</th>
+                    <th>Restaurante Tipo</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let restaurantType of restaurantTypes">
+                    <td>
+                        <button class="large material-icons" style="font-size:25px" alt="Editar" [routerLink]="['/restaurants-types/form', restaurantType.id]">mode_edit</button>
+                        <button class="large material-icons" style="font-size:25px" alt="Excluir" (click)="delete(restaurantType)">delete</button>
+                    </td>
+                    <td>{{ restaurantType.name }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>

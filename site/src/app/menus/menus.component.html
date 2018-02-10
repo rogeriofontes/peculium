@@ -1,0 +1,37 @@
+<!--nav class="nav-extended">
+    <div class="nav-content">
+        <ul class="tabs tabs-transparent">
+            <li routerLinkActive="active" class="tab"><a routerLink="" class="active">Home</a></li>
+            <li routerLinkActive="active" class="tab"><a routerLink="/restaurants-types">Tipo de Restaurante</a></li>
+            <li routerLinkActive="active" class="tab"><a routerLink="/restaurantes">Restaurantes</a></li>
+            <li routerLinkActive="active" class="tab"><a routerLink="/pratos">Pratos</a></li>
+        </ul>
+    </div>
+</nav-->
+
+
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content" *ngIf="isSignedIn">
+    <li routerLinkActive="active" class="tab"><a routerLink="/restaurants-types">Tipo</a></li>
+    <li routerLinkActive="active" class="tab"><a routerLink="/restaurantes">Restaurantes</a></li>
+    <li routerLinkActive="active" class="tab"><a routerLink="/pratos">Pratos</a></li>
+    <li class="divider"></li>
+    <li><a href="#!">three</a></li>
+</ul>
+<nav>
+    <div class="nav-wrapper">
+        <a href="#!" class="brand-logo">Logo</a>
+        <ul class="right hide-on-med-and-down" *ngIf="isSignedIn">
+            <li routerLinkActive="active" class="tab"><a routerLink="" class="active">Home</a></li>
+            <!-- Dropdown Trigger -->
+            <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Restaurante<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a href="#" [routerLink]="['/login']">Logout</a></li>
+        </ul>
+        <ul class="right hide-on-med-and-down" *ngIf="!isSignedIn">
+            <li routerLinkActive="active" class="tab"><a routerLink="" class="active">Home</a></li>
+            <!-- Dropdown Trigger -->
+            <li><a href="#" [routerLink]="['/login']">Login</a></li>
+        </ul>
+    </div>
+</nav>
+<router-outlet></router-outlet>

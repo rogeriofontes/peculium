@@ -1,0 +1,41 @@
+<div class="container">
+
+    <h2>Prato - Form</h2>
+    <form class="col s12" [formGroup]="myForm" novalidate (ngSubmit)="onSubmit()">
+        <div class="cadastrar">
+            <div class="row">
+                <div class="input-field col s12">
+                    <select materialize="material_select" [(ngModel)]="prato.restaurant" [ngModelOptions]="{standalone: true}" (input)="onInput($event)">
+                        <option [ngValue]="null" disabled selected>Escolha o tipo de Restaurante</option>
+                          <option [ngValue]="restaurant.id == prato.restaurant?.id ? prato.restaurant : restaurant"
+                        *ngFor="let restaurant of restaurants; trackBy: trackRestaurantById">  
+                            {{ restaurant.name }}
+                        </option>
+                    </select>
+                    <label>Selecione o Restaurante</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <label class="active">Nome prato</label>
+                    <input value="" id="name" [(ngModel)]="prato.name" type="text" class="validate" [ngModelOptions]="{standalone: true}">
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <label class="active">Descricao prato</label>
+                    <input value="" id="description" [(ngModel)]="prato.description" type="text" class="validate" [ngModelOptions]="{standalone: true}">
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6" *ngFor="let onMenu of onMenus">
+                    <label class="active">Esta no Menu</label>
+                    <input value="" id="onMenu" [(ngModel)]="prato.onMenu" [value]="onMenu.value" type="radio" class="validate" [ngModelOptions]="{standalone: true}">
+                    <label for="onMenu"> {{onMenu.display}} </label>
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light pull-right btnprato" type="submit" name="action">Cadastrar</button>
+
+        </div>
+    </form>
+</div>

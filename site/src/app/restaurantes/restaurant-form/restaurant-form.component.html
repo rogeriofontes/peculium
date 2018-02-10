@@ -1,0 +1,46 @@
+<div class="container">
+
+    <h2>Restaurantes - Form</h2>
+    <form class="col s12" [formGroup]="myForm" novalidate (ngSubmit)="onSubmit()">
+        <div class="cadastrar">
+            <div class="row">
+                <div class="input-field col s12">
+                    <select materialize="material_select" [(ngModel)]="restaurante.restaurantType" [ngModelOptions]="{standalone: true}" (input)="onInput($event)">
+                        <option [ngValue]="null" disabled selected>Escolha o tipo de restaurante</option>
+                          <option [ngValue]="type.id == restaurante.restaurantType?.id ? restaurante.restaurantType : type"
+                        *ngFor="let type of restaurantTypes; trackBy: trackRestaurantTypeById">  
+                            {{ type.name }}
+                        </option>
+                    </select>
+                    <label>Materialize Select</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <label class="active">Nome Restaurante</label>
+                    <input value="" id="name" [(ngModel)]="restaurante.name" type="text" class="validate" [ngModelOptions]="{standalone: true}">
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <label class="active">Descricao Restaurante</label>
+                    <input value="" id="description" [(ngModel)]="restaurante.description" type="text" class="validate" [ngModelOptions]="{standalone: true}">
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <label class="active">Endereco Restaurante</label>
+                    <input value="" id="address" [(ngModel)]="restaurante.address" type="text" class="validate" [ngModelOptions]="{standalone: true}">
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <label class="active">rate Restaurante</label>
+                    <input value="" id="rate" [(ngModel)]="restaurante.rate" type="text" class="validate" [ngModelOptions]="{standalone: true}">
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light pull-right btnRestaurante" type="submit" name="action">Cadastrar</button>
+
+        </div>
+    </form>
+</div>

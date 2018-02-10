@@ -1,0 +1,44 @@
+<div class="container">
+
+    <h2>Pratos</h2>
+
+    <div class="pesquisar">
+        <div class="row">
+            <div class="input-field col s6">
+                <input value="" id="name" type="text" class="validate" [(ngModel)]="name" #pratoInput>
+                <label class="active">Pesquisar Prato</label>
+            </div>
+        </div>
+
+        <button class="btn waves-effect waves-light pull-right btnRestaurante" (click)="get()">Cancelar</button>
+        <button class="btn waves-effect waves-light pull-right btnRestaurante" (click)="getByName(pratoInput.value)">Pesquisar</button>
+        <button class="btn waves-effect waves-light pull-right btnRestaurante" routerLink="/pratos/form">Cadastrar Prato</button>
+
+    </div>
+
+    <div class="pesquisar">
+
+        <table class="highlight">
+            <thead>
+                <tr>
+                    <th style="width:100px;text-align:center">Ação</th>
+                    <th>Prato</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let prato of pratos">
+                    <td>
+                        <button class="large material-icons" style="font-size:25px" alt="Editar" [routerLink]="['/pratos/form', prato.id]">mode_edit</button>
+                        <button class="large material-icons" style="font-size:25px" alt="Excluir" (click)="delete(prato)">delete</button>
+                    </td>
+                    <td>{{ prato.name }}</td>
+                    <td>{{ prato.description }}</td>
+                    <td>{{ prato.restaurant.name }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
