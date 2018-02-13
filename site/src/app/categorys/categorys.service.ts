@@ -7,19 +7,18 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 
-import { Restaurante } from './restaurante';
+import { Category } from './category';
 
 @Injectable()
-export class RestauranteService {
+export class CategorysService {
     public token: string;
     private currentUser;
     private options;
-
-    private headers = new Headers({ 'Content-Type': 'application/json' });  
-    private apiUrl = environment.apiUrl + '/restaurants'; 
+  
+    private headers = new Headers({ 'Content-Type': 'application/json' }); 
+    private apiUrl = environment.apiUrl + '/categorys'; 
 
     constructor(private http: Http) { 
-        console.log(' local: '+ localStorage.getItem('currentUser'));
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.token = this.currentUser && this.currentUser.token;
         this.headers.append('Authorization', 'Bearer ' +  this.token);
@@ -27,61 +26,51 @@ export class RestauranteService {
     }
 
     //Metodo GET all
-    get(): Promise<Restaurante[]> {
+    get(): Promise<Category[]> {
         return this.http.get(this.apiUrl, this.options)
             .toPromise()
-            .then(response => response.json() as Restaurante[])
+            .then(response => response.json() as Category[])
             //.catch(this.handleError);
     }
 
     //busca pelo nome
-    getByName(name: string): Promise<Restaurante> {
+    getByName(name: string): Promise<Category> {
         const url = `${this.apiUrl}/find-by-name/${name}`;
-        return this.http.get(url)
+        console.log('->--'+url);
+        return this.http.get(url, this.options)
             .toPromise()
-            .then(response => response.json() as Restaurante)
-        
+            .then(response => response.json() as Category)
             //.catch(this.handleError);
     }
 
-    //busca pelo id
-    getById(id: number): Promise<Restaurante> {
+
+  //busca pelo id
+    getById(id: number): Promise<Category> {
         const url = `${this.apiUrl}/${id}`;
         return this.http.get(url, this.options)
             .toPromise()
-            .then(response => response.json() as Restaurante)
+            .then(response => response.json() as Category)
         
             //.catch(this.handleError);
     }
-
-    //busca pelo id
-    getPlatesById(id: number): Promise<Restaurante> {
-        const url = `${this.apiUrl}/${id}/plates`;
-        return this.http.get(url, this.options)
-            .toPromise()
-            .then(response => response.json() as Restaurante)
-        
-            //.catch(this.handleError);
-    }
-
     //Metodo POST
-    post(restaurante: Restaurante): Promise<Restaurante> {
+    post(category: Category): Promise<Category> {
         return this.http
-            .post(this.apiUrl, JSON.stringify(restaurante), this.options)
+            .post(this.apiUrl, JSON.stringify(category), this.options)
             .toPromise()
             //valida resposta
-            .then(res => res.json() as Restaurante)
+            .then(res => res.json() as Category)
             //.catch(this.handleError);
     }
     
      //Metodo POST
-    update(restaurante: Restaurante): Promise<Restaurante> {
-        const url = `${this.apiUrl}/${restaurante.id}`;
+    update(category: Category): Promise<Category> {
+        const url = `${this.apiUrl}/${category.id}`;
         return this.http
-            .put(url, JSON.stringify(restaurante), this.options)
+            .put(url, JSON.stringify(category), this.options)
             .toPromise()
             //valida resposta
-            .then(res => res.json() as Restaurante)
+            .then(res => res.json() as Category)
             //.catch(this.handleError);
     }
 
@@ -95,12 +84,12 @@ export class RestauranteService {
     private getUserUrl(id){
         return this.apiUrl + "/" + id;
     }
-    
     //trata o erro    
     // private handleError(error: any): Promise<any> {
     //     console.log(error);
     //     //console.error('An error occurred', error);
     //     return Promise.reject(error.message || error);
     // }
+
 
 }

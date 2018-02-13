@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RestaurantTypeFormComponent } from './restaurant-type-form.component';
+import { CategoryFormComponent } from './category-form.component';
 
-describe('RestaurantTypeFormComponent', () => {
-  let component: RestaurantTypeFormComponent;
-  let fixture: ComponentFixture<RestaurantTypeFormComponent>;
+describe('CategoryFormComponent', () => {
+  let component: CategoryFormComponent;
+  let fixture: ComponentFixture<CategoryFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RestaurantTypeFormComponent ]
+      declarations: [ CategoryFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RestaurantTypeFormComponent);
+    fixture = TestBed.createComponent(CategoryFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

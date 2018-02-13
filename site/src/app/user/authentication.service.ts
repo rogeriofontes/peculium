@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map'
 @Injectable()
 export class AuthenticationService {
   public token: string;
-  private apiUrl = environment.apiUrl + '/authenticate'; 
+  private apiUrl = environment.apiUrl + '/auth'; 
   private headers = new Headers({ 'Content-Type': 'application/json' });  
   
   constructor(

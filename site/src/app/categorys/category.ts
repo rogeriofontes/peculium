@@ -1,4 +1,4 @@
-export class RestaurantType {
+export class Category {
     id: number;
     name: string;
 }

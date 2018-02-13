@@ -1,31 +1,32 @@
+import { Category } from './../../categorys/category';
+import { Movement } from './../movement';
+
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
-import { RestauranteService } from '../restaurantes.service';
-import { RestaurantsTypesService } from '../../restaurants-types/restaurants-types.service';
+import { MovementsService } from '../movements.service';
+import { CategorysService } from '../../categorys/categorys.service';
 
-import { Restaurante } from '../restaurante';
-import { RestaurantType } from '../../restaurants-types/restaurant-type';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-restaurant-form',
-  templateUrl: './restaurant-form.component.html',
-  styleUrls: ['./restaurant-form.component.css']
+  selector: 'app-movement-form',
+  templateUrl: './movement-form.component.html',
+  styleUrls: ['./movement-form.component.css']
 })
-export class RestaurantFormComponent implements OnInit {
+export class MovementFormComponent implements OnInit {
 
   public myForm: FormGroup; // our model driven form
-  public restaurants: Restaurante[] = [];
-  public restaurantTypes: RestaurantType[] = [];
+  public movements: Movement[] = [];
+  public categorys: Category[] = [];
 
   //restauranteEditado: Restaurante = {id1: 0, name: '', description: '', address: '', rate: 1 };
-  restaurante: Restaurante = new Restaurante();
+  movement: Movement = new Movement();
   title: string;
 
   constructor(
-    private restauranteService: RestauranteService, 
-    private restaurantTypeService: RestaurantsTypesService, 
+    private movementsService: MovementsService, 
+    private categoryService: CategorysService, 
     private router: Router, 
     private route: ActivatedRoute,
     private formBuilder: FormBuilder) { 
@@ -42,18 +43,18 @@ export class RestaurantFormComponent implements OnInit {
       });
     }
 
-  getRestauranteType(): void {
-     this.restaurantTypes = null; 
-     this.restaurantTypeService
+  getCategory(): void {
+     this.movements = null; 
+     this.movementsService
       .get()
       .then(result => {
-          this.restaurantTypes = result
-           console.log(this.restaurantTypes);
+          this.movements = result
+           console.log(this.movement);
       });
   }
 
   ngOnInit() {
-     this.getRestauranteType();
+     this.getCategory();
      //console.log(this.restaurantTypes);
      var id = this.route.params.subscribe(params => {
       var id = params['id'];
@@ -63,9 +64,9 @@ export class RestaurantFormComponent implements OnInit {
       if (!id)
         return;
 
-      this.restauranteService.getById(id)
+      this.movementsService.getById(id)
         .then(
-          restaurante => this.restaurante = restaurante,
+          movement => this.movement = movement,
           response => {
             if (response.status == 404) {
               this.router.navigate(['NotFound']);
@@ -78,21 +79,21 @@ export class RestaurantFormComponent implements OnInit {
 
 
   onSubmit(): void {
-    console.log(this.restaurante);
-    if (this.restaurante.id){
-        this.restauranteService.update(this.restaurante)
-          .then(restaurante => {
-            this.restaurants = null;
+    console.log(this.movement);
+    if (this.movement.id){
+        this.movementsService.update(this.movement)
+          .then(movement => {
+            this.movements = null;
             //this.restaurants.push(restaurante);
-            this.router.navigate(['restaurantes']);
+            this.router.navigate(['movements']);
         });
         //this.restauranteEditado = { id1: 0, name: '', description: '', address: '', rate: 1 };
     } else {
-        this.restauranteService.post(this.restaurante)
+        this.movementsService.post(this.movement)
           .then(restaurante => {
-            this.restaurants = null;
+            this.movements = null;
            // this.restaurants.push(restaurante);
-            this.router.navigate(['restaurantes']);
+            this.router.navigate(['movements']);
         });
     }
   }

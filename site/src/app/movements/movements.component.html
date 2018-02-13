@@ -1,0 +1,51 @@
+<div class="container">
+
+    <h2>Movimentação:</h2>
+
+    <div class="pesquisar">
+        <div class="row">
+            <div class="input-field col s6">
+                <input value="" id="nameMovement" type="text" class="validate" [(ngModel)]="name" #movementInput>
+                <label class="active">Pesquisar</label>
+            </div>
+        </div>
+
+        <button class="btn waves-effect waves-light pull-right btnMovement" (click)="get()">Cancelar</button>
+        <button class="btn waves-effect waves-light pull-right btnMovement" (click)="getByName(movementInput.value)">Pesquisar</button>
+        <button class="btn waves-effect waves-light pull-right btnMovement" routerLink="/movements/form">Cadastrar</button>
+
+    </div>
+
+    <div class="pesquisar">
+
+        <table class="highlight">
+            <thead>
+                <tr>
+                    <th style="width:100px;text-align:center">Ação</th>
+                    <th>Movimentação</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let movement of movements">
+                    <td>
+                        <button class="large material-icons" style="font-size:25px" alt="Editar" [routerLink]="['/movements/form', movement.id]">mode_edit</button>
+                        <button class="large material-icons" style="font-size:25px" alt="Excluir" (click)="delete(movement)">delete</button>
+                    </td>
+                    <td>{{ movement.name }}</td>
+                    <td>{{ movement.date }}</td>
+                    <td>{{ movement.value }}</td>
+                    <td>{{ movement.interest }}</td>
+                    <td>{{ movement.totalValue }}</td>
+                    <td>{{ movement.portion }}</td>
+                    <td>{{ movement.portionTotal }}</td>
+                    <td>{{ movement.category.name }}</td>
+                    <td>{{ movement.account.name }}</td>
+                    <td>{{ movement.establishment.name }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>

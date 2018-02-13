@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
-import { RestaurantsTypesService } from '../restaurants-types.service';
-import { RestaurantType } from '../restaurant-type';
+import { CategorysService } from '../categorys.service';
+import { Category } from '../category';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -10,16 +10,16 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './restaurant-type-form.component.html',
   styleUrls: ['./restaurant-type-form.component.css']
 })
-export class RestaurantTypeFormComponent implements OnInit {
+export class CategoryFormComponent implements OnInit {
   
   public myForm: FormGroup; // our model driven form
-  public restaurantTypes: RestaurantType[] = [];
+  public categorys: Category[] = [];
   //restauranteEditado: Restaurante = {id1: 0, name: '', description: '', address: '', rate: 1 };
-  restaurantType: RestaurantType = new RestaurantType();
+  category: Category = new Category();
   title: string;
 
   constructor(
-    private restaurantsTypesService: RestaurantsTypesService, 
+    private categorysService: CategorysService, 
     private router: Router, 
     private route: ActivatedRoute,
     private formBuilder: FormBuilder) { 
@@ -37,9 +37,9 @@ export class RestaurantTypeFormComponent implements OnInit {
       if (!id)
         return;
 
-      this.restaurantsTypesService.getById(id)
+      this.categorysService.getById(id)
         .then(
-          restaurantType => this.restaurantType = restaurantType,
+          category => this.category = category,
           response => {
             if (response.status == 404) {
               this.router.navigate(['NotFound']);
@@ -49,21 +49,21 @@ export class RestaurantTypeFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.restaurantType);
-    if (this.restaurantType.id){
-        this.restaurantsTypesService.update(this.restaurantType)
-          .then(restaurantType => {
-            this.restaurantTypes = null;
+    console.log(this.category);
+    if (this.category.id){
+        this.categorysService.update(this.category)
+          .then(category => {
+            this.categorys = null;
            // this.restaurantTypes.push(restaurantType);
-            this.router.navigate(['restaurants-types']);
+            this.router.navigate(['categorys']);
         });
         //this.restauranteEditado = { id1: 0, name: '', description: '', address: '', rate: 1 };
     } else {
-        this.restaurantsTypesService.post(this.restaurantType)
+        this.categorysService.post(this.category)
           .then(restaurantType => {
-            this.restaurantTypes = null;
+            this.categorys = null;
             //this.restaurantTypes.push(restaurantType);
-            this.router.navigate(['restaurants-types']);
+            this.router.navigate(['categorys']);
         });
     }
    

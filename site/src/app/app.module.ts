@@ -8,13 +8,13 @@ import { MaterializeModule } from 'angular2-materialize';
 
 import { AppComponent } from './app.component';
 import { MenusComponent } from './menus/menus.component';
-import { RestaurantesComponent } from './restaurantes/restaurantes.component';
-import { PratosComponent } from './pratos/pratos.component';
+import { MovementsComponent } from './movements/movements.component';
+import { CategorysComponent } from './categorys/categorys.component';
 import { HomeComponent } from './home/home.component';
 import { routing } from './app.routing';
 
-import { RestauranteService } from './restaurantes/restaurantes.service';
-import { PratoService } from './pratos/prato.service';
+import { MovementsService } from './movements/movements.service';
+import { CategorysService } from './categorys/categorys.service;
 import { RestaurantsTypesService } from './restaurants-types/restaurants-types.service';
 import { UserService } from './user/user.service';
 import { AuthenticationService } from './user/authentication.service';
