@@ -44,9 +44,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	 */
 
 	@Override
-	protected void configure(HttpSecurity http) throws Exception { // .antMatchers(HttpMethod.POST,
-																	// "/login").permitAll()
-		http.csrf().disable().authorizeRequests().antMatchers("/").permitAll().antMatchers("/authenticate").permitAll().antMatchers(HttpMethod.OPTIONS, "/**").permitAll().anyRequest().authenticated().and()
+	protected void configure(HttpSecurity http) throws Exception {
+		/*
+		 * http.csrf().disable().authorizeRequests().antMatchers("/").permitAll(
+		 * ).antMatchers("/register").permitAll()
+		 * .antMatchers("/auth").permitAll().antMatchers(HttpMethod.OPTIONS,
+		 * "/**").permitAll().anyRequest() .authenticated().and()
+		 * .addFilterBefore(new JWTAuthenticationFilter(),
+		 * UsernamePasswordAuthenticationFilter.class);
+		 */
+
+		http.csrf().disable().authorizeRequests().antMatchers("/auth/**").permitAll().and().authorizeRequests()
+				.antMatchers("/register/**").permitAll().and().authorizeRequests().antMatchers("/swagger-ui.html")
+				.permitAll().and().authorizeRequests().antMatchers("/v2/**").permitAll().and().authorizeRequests()
+				.antMatchers("/swagger-resources/**").permitAll().and().authorizeRequests()
+				.antMatchers(HttpMethod.OPTIONS, "/**").permitAll().anyRequest().authenticated().and()
 				.addFilterBefore(new JWTAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 	}
 

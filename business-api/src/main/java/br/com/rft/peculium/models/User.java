@@ -16,8 +16,6 @@ import javax.persistence.Table;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import br.com.rft.peculium.util.PasswordCrypto;
-
 @Entity
 @Table(name = "user")
 public class User implements UserDetails {
@@ -34,18 +32,13 @@ public class User implements UserDetails {
 	@Column(name = "password")
 	private String password;
 
-	@Column(name = "email")
-	private String email;
-
 	@OneToMany(mappedBy = "user")
 	private Set<UserRole> roles;
 
-	public static User createUser(String username, String email, String password) {
+	public static User createUser(String username, String password) {
 		User user = new User();
-
 		user.username = username;
-		user.email = email;
-		user.password = PasswordCrypto.getInstance().encrypt(password);
+		user.password = password;
 
 		if (user.roles == null) {
 			user.roles = new HashSet<>();
@@ -81,14 +74,6 @@ public class User implements UserDetails {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public Set<UserRole> getRoles() {
@@ -128,14 +113,12 @@ public class User implements UserDetails {
 		this.id = user.getId();
 		this.username = user.getUsername();
 		this.password = user.getPassword();
-		this.email = user.getEmail();
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
@@ -150,11 +133,6 @@ public class User implements UserDetails {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -170,7 +148,7 @@ public class User implements UserDetails {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", email=" + email + ", roles="
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", roles="
 				+ roles + "]";
 	}
 

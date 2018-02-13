@@ -17,7 +17,7 @@ public class CurrentUserServiceImpl implements CurrentUserService {
 	@Override
 	public CurrentUser getDataToCurrentUser() {
 		User user = this.customUserDetailsService.loadCurrentUser();
-		return new CurrentUser(user.getUsername(), user.getEmail(), user.getRoles());
+		return new CurrentUser(user.getUsername(), user.getUsername(), user.getRoles());
 	}
 
 	@Override

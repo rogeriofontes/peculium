@@ -14,7 +14,6 @@ public class LocationTOConverter implements Converter<Location, LocationTO> {
 		LocationTO target = new LocationTO();
 
 		target.setId(source.getId());
-		target.setName(source.getName());
 		target.setStreet(source.getStreet());
 		target.setComplement(source.getComplement());
 		target.setZipcode(source.getZipcode());

@@ -14,7 +14,8 @@ import br.com.rft.peculium.models.UserRole;
 @Qualifier(value = "userRoleRepository")
 public interface UserRoleRepository extends JpaRepository<UserRole, Long> {
 	
-	@Query("SELECT ur FROM br.com.ft.crestaurant.models.UserRole ur WHERE ur.user.id = :userId")
+	@Query("SELECT ur FROM br.com.rft.peculium.models.UserRole ur WHERE ur.user.id = :userId")
 	Set<UserRole> findRoleNameByUserId(@Param("userId") Long userId);
- 
+	
+	UserRole findByRoleName(@Param("roleName") String roleName);
 }

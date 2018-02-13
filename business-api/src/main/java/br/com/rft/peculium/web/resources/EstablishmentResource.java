@@ -37,6 +37,7 @@ public class EstablishmentResource {
 	@ApiResponses({ @ApiResponse(code = 200, message = "Nice!", response = Establishment.class),
 			@ApiResponse(code = 400, message = "Invalid ID supplied", response = Establishment.class),
 			@ApiResponse(code = 404, message = "Pet not found", response = Establishment.class) })ATION_JSON_VALUE) */
+	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@Timed
 	public ResponseEntity<List<EstablishmentTO>> list() {

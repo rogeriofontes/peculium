@@ -32,13 +32,18 @@ public class CustomUserDetailsService implements UserDetailsService {
 	private UserRoleRepository userRoleRepository;
 
 	@Override
-	public UserDetails loadUserByUsername(final String email) {
+	public UserDetails loadUserByUsername(final String username) {
 
-		User user = userRepository.findByEmail(email);
-		Set<UserRole> roles = userRoleRepository.findRoleNameByUserId(user.getId());
-		List<GrantedAuthority> authorities = buildUserAuthority(roles);
-		
-		return buildUserForAuthentication(user, authorities);
+		User user = userRepository.findByUsername(username);
+		if (user != null) {
+			
+			Set<UserRole> roles = userRoleRepository.findRoleNameByUserId(user.getId());
+			List<GrantedAuthority> authorities = buildUserAuthority(roles);
+			
+			return buildUserForAuthentication(user, authorities);
+		}
+
+		return null;
 
 	}
 

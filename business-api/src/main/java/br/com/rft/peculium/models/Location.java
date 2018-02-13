@@ -17,7 +17,7 @@ import lombok.ToString;
 @Entity
 @Table(name = "location")
 @EqualsAndHashCode(callSuper = true)
-@ToString(callSuper = true, of = { "name", "street", "complement", "zipcode", "latitude", "longitude", "district" })
+@ToString(callSuper = true, of = { "street", "complement", "zipcode", "latitude", "longitude", "district" })
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,10 +26,6 @@ public class Location extends AudityEntity {
 
 	private static final long serialVersionUID = 4795974382859364322L;
 
-	@Getter
-	@Setter
-	private String name;
-	
 	@Getter
 	@Setter
 	private String street;
@@ -57,7 +53,6 @@ public class Location extends AudityEntity {
 	private District district;
 	
 	public void update(Location location) {
-		this.name = location.getName();
 		this.street = location.getStreet();
 		this.complement = location.getComplement();
 		this.zipcode = location.getZipcode();
