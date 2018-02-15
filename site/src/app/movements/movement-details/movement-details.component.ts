@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { RestauranteService } from '../restaurantes.service';
-import { Restaurante } from '../restaurante';
+import { MovementsService } from '../movements.service';
+import { Movement } from '../movement';
 
 @Component({
   selector: 'app-restaurant-details',
   templateUrl: './restaurant-details.component.html',
   styleUrls: ['./restaurant-details.component.css']
 })
-export class RestaurantDetailsComponent implements OnInit {
-  public restaurant: Restaurante;
+export class MovementDetailsComponent implements OnInit {
+  public movement: Movement;
   
   constructor(
-     private restauranteService: RestauranteService, 
+     private movementsService: MovementsService, 
      private router: Router,
      private route: ActivatedRoute,
   ) { }
@@ -26,9 +26,9 @@ export class RestaurantDetailsComponent implements OnInit {
       if (!id)
         return;
 
-      this.restauranteService.getPlatesById(id)
+      this.movementsService.getPlatesById(id)
         .then(
-          restaurante => this.restaurant = restaurante,
+          movement => this.movement = movement,
           response => {
             if (response.status == 404) {
               this.router.navigate(['NotFound']);

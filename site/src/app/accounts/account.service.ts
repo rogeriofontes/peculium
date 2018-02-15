@@ -7,7 +7,7 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 
-import { Prato } from './prato';
+import { Account } from './account';
 
 @Injectable()
 export class PratoService {
@@ -16,7 +16,7 @@ export class PratoService {
     private options;
 
     private headers = new Headers({ 'Content-Type': 'application/json' }); 
-    private apiUrl = environment.apiUrl + '/plates'; 
+    private apiUrl = environment.apiUrl + '/accounts'; 
   
     constructor(private http: Http) { 
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -26,51 +26,51 @@ export class PratoService {
     }
 
       //Metodo GET all
-    get(): Promise<Prato[]> {
+    get(): Promise<Account[]> {
         return this.http.get(this.apiUrl, this.options)
             .toPromise()
-            .then(response => response.json() as Prato[])
+            .then(response => response.json() as Account[])
             //.catch(this.handleError);
     }
 
     //busca pelo nome
-    getByName(name: string): Promise<Prato> {
+    getByName(name: string): Promise<Account> {
         const url = `${this.apiUrl}/find-by-name/${name}`;
         return this.http.get(url, this.options)
             .toPromise()
-            .then(response => response.json() as Prato)
+            .then(response => response.json() as Account)
         
             //.catch(this.handleError);
     }
 
     //busca pelo id
-    getById(id: number): Promise<Prato> {
+    getById(id: number): Promise<Account> {
         const url = `${this.apiUrl}/${id}`;
         return this.http.get(url, this.options)
             .toPromise()
-            .then(response => response.json() as Prato)
+            .then(response => response.json() as Account)
         
             //.catch(this.handleError);
     }
 
     //Metodo POST
-    post(prato: Prato): Promise<Prato> {
+    post(account: Account): Promise<Account> {
         return this.http
-            .post(this.apiUrl, JSON.stringify(prato), this.options)
+            .post(this.apiUrl, JSON.stringify(account), this.options)
             .toPromise()
             //valida resposta
-            .then(res => res.json() as Prato)
+            .then(res => res.json() as Account)
             //.catch(this.handleError);
     }
       
      //Metodo PUT
-    update(prato: Prato): Promise<Prato> {
-        const url = `${this.apiUrl}/${prato.id}`;
+    update(account: Account): Promise<Account> {
+        const url = `${this.apiUrl}/${account.id}`;
         return this.http
-            .put(url, JSON.stringify(prato), this.options)
+            .put(url, JSON.stringify(account), this.options)
             .toPromise()
             //valida resposta
-            .then(res => res.json() as Prato)
+            .then(res => res.json() as Account)
             //.catch(this.handleError);
     }
 

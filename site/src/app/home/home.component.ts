@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RestauranteService } from '../restaurantes/restaurantes.service';
-import { Restaurante } from '../restaurantes/restaurante';
+import { MovementsService } from '../movements/movements.service';
+import { Movement } from '../movements/movement';
 
 @Component({
   selector: 'app-home',
@@ -12,19 +12,19 @@ export class HomeComponent implements OnInit {
   title = 'Sistema de Cadastro de Restaurante (Avaliação)';
   urlImagem = 'http://lorempixel.com/640/480/food/';
 
-  public restaurants: Restaurante[] = [];
+  public movements: Movement[] = [];
 
   constructor(
-    private restauranteService: RestauranteService
+    private movementsService: MovementsService
   ) { }
 
   getRestaurante(): void {
-     this.restaurants = null; 
-     this.restauranteService
+     this.movements = null; 
+     this.movementsService
       .get()
       .then(result => {
-          this.restaurants = result
-           console.log(this.restaurants);
+          this.movements = result
+           console.log(this.movements);
       });
   }
 

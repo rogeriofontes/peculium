@@ -14,16 +14,15 @@ import { HomeComponent } from './home/home.component';
 import { routing } from './app.routing';
 
 import { MovementsService } from './movements/movements.service';
-import { CategorysService } from './categorys/categorys.service;
-import { RestaurantsTypesService } from './restaurants-types/restaurants-types.service';
+//import { CategorysService } from './categorys/categorys.service;
 import { UserService } from './user/user.service';
 import { AuthenticationService } from './user/authentication.service';
 
-import { RestaurantFormComponent } from './restaurantes/restaurant-form/restaurant-form.component';
-import { PlateFormComponent } from './pratos/plate-form/plate-form.component';
-import { RestaurantsTypesComponent } from './restaurants-types/restaurants-types.component';
-import { RestaurantTypeFormComponent } from './restaurants-types/restaurant-type-form/restaurant-type-form.component';
-import { RestaurantDetailsComponent } from './restaurantes/restaurant-details/restaurant-details.component';
+//import { MovementFormComponent } from './movements/movement-form/movement-form.component;
+//import { CategoryFormComponent } from './pratos/plate-form/plate-form.component';
+//import { RestaurantsTypesComponent } from './restaurants-types/restaurants-types.component';
+//import { RestaurantTypeFormComponent } from './restaurants-types/restaurant-type-form/restaurant-type-form.component';
+//import { RestaurantDetailsComponent } from './restaurantes/restaurant-details/restaurant-details.component';
 import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './user/auth-guard';
@@ -32,14 +31,14 @@ import { AuthGuard } from './user/auth-guard';
   declarations: [
     AppComponent,
     MenusComponent,
-    RestaurantesComponent,
-    PratosComponent,
+    //RestaurantesComponent,
+   // PratosComponent,
     HomeComponent,
-    RestaurantFormComponent,
-    PlateFormComponent,
-    RestaurantsTypesComponent,
-    RestaurantTypeFormComponent,
-    RestaurantDetailsComponent,
+    //RestaurantFormComponent,
+    //PlateFormComponent,
+   // RestaurantsTypesComponent,
+    //RestaurantTypeFormComponent,
+   // RestaurantDetailsComponent,
     UserComponent,
     LoginComponent
   ],
@@ -52,7 +51,8 @@ import { AuthGuard } from './user/auth-guard';
     routing,
     CommonModule
   ],
-  providers: [AuthGuard, RestauranteService, PratoService, RestaurantsTypesService, UserService, AuthenticationService],
+  //providers: [AuthGuard, RestauranteService, PratoService, RestaurantsTypesService, UserService, AuthenticationService],
+  providers: [AuthGuard, UserService, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
