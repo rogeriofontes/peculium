@@ -52,7 +52,7 @@ import { AuthGuard } from './user/auth-guard';
     CommonModule
   ],
   //providers: [AuthGuard, RestauranteService, PratoService, RestaurantsTypesService, UserService, AuthenticationService],
-  providers: [AuthGuard, UserService, AuthenticationService],
+  providers: [AuthGuard, MovementsService, UserService, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
