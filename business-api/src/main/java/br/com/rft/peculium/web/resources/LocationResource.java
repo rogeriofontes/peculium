@@ -37,7 +37,7 @@ public class LocationResource {
 	@ApiResponses({ @ApiResponse(code = 200, message = "Nice!", response = Location.class),
 			@ApiResponse(code = 400, message = "Invalid ID supplied", response = Location.class),
 			@ApiResponse(code = 404, message = "Pet not found", response = Location.class) })ATION_JSON_VALUE) */
-	@ResponseBody
+	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Timed
 	public ResponseEntity<List<LocationTO>> list() {
 		List<LocationTO> locations = locationService.getAll();

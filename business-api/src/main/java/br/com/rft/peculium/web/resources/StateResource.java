@@ -37,7 +37,7 @@ public class StateResource {
 	@ApiResponses({ @ApiResponse(code = 200, message = "Nice!", response = State.class),
 			@ApiResponse(code = 400, message = "Invalid ID supplied", response = State.class),
 			@ApiResponse(code = 404, message = "Pet not found", response = State.class) })ATION_JSON_VALUE) */
-	@ResponseBody
+	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Timed
 	public ResponseEntity<List<StateTO>> list() {
 		List<StateTO> states = stateService.getAll();

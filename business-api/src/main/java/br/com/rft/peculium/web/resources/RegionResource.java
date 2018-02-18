@@ -37,7 +37,7 @@ public class RegionResource {
 	@ApiResponses({ @ApiResponse(code = 200, message = "Nice!", response = Region.class),
 			@ApiResponse(code = 400, message = "Invalid ID supplied", response = Region.class),
 			@ApiResponse(code = 404, message = "Pet not found", response = Region.class) })ATION_JSON_VALUE) */
-	@ResponseBody
+	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Timed
 	public ResponseEntity<List<RegionTO>> list() {
 		List<RegionTO> regions = regionService.getAll();

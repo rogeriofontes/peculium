@@ -1,0 +1,50 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Striped Table with Hover</h4>
+                        <p class="account">Here is a subtitle for this table</p>
+                    </div>
+                    <div class="pesquisar">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input value="" id="nameAccount" type="text" class="validate" [(ngModel)]="name" #accountInput>
+                                <label class="active">Pesquisar Account</label>
+                            </div>
+                        </div>
+
+                        <button class="btn waves-effect waves-light pull-right btnAccount" (click)="get()">Cancelar</button>
+                        <button class="btn waves-effect waves-light pull-right btnAccount" (click)="getByName(accountInput.value)">Pesquisar</button>
+                        <button class="btn waves-effect waves-light pull-right btnAccount" routerLink="/account-form">Cadastrar Account</button>
+
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Name:</th>
+                                    <th>Mês:</th>
+                                    <th>Saldo:</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let account of accounts">
+                                    <td>{{ account.name }}</td>
+                                    <td>{{ account.month }}</td>
+                                    <td>{{ account.balance }}</td>
+                                    <td>
+                                        <button class="large material-icons" style="font-size:25px" alt="Editar" [routerLink]="['/account-form', account.id]">mode_edit</button>
+                                        <button class="large material-icons" style="font-size:25px" alt="Excluir" (click)="delete(account)">delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

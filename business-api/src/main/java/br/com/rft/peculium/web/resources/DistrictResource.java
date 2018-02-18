@@ -37,7 +37,7 @@ public class DistrictResource {
 	@ApiResponses({ @ApiResponse(code = 200, message = "Nice!", response = District.class),
 			@ApiResponse(code = 400, message = "Invalid ID supplied", response = District.class),
 			@ApiResponse(code = 404, message = "Pet not found", response = District.class) })ATION_JSON_VALUE) */
-	@ResponseBody
+	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Timed
 	public ResponseEntity<List<DistrictTO>> list() {
 		List<DistrictTO> districts = districtService.getAll();

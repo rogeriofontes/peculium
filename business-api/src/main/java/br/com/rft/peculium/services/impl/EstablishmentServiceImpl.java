@@ -80,4 +80,10 @@ public class EstablishmentServiceImpl implements EstablishmentService {
 		//return examTypeRepository.findAll(pageable);
 		return null;
 	}
+
+	@Override
+	public EstablishmentTO findByName(String name) {
+		Establishment result = establishmentRepository.findByName(name);
+		return conversionService.convert(result, EstablishmentTO.class);
+	}
 }

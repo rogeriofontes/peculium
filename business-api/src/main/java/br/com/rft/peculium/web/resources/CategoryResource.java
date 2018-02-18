@@ -72,6 +72,14 @@ public class CategoryResource {
 		CategoryTO saved = categoryService.edit(category, id);
 		return new ResponseEntity<>(saved, HttpStatus.CREATED);
 	}
+	
+	@RequestMapping(value = "/find-by-name/{name}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	@Timed
+	public ResponseEntity<CategoryTO> getByName(@PathVariable("name") String name) {
+		CategoryTO plate = categoryService.findByName(name);
+		return new ResponseEntity<>(plate, HttpStatus.OK);
+	}
 
 	@SuppressWarnings("rawtypes")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_VALUE)

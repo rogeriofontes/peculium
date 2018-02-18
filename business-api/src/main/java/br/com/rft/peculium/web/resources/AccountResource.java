@@ -37,7 +37,7 @@ public class AccountResource {
 	@ApiResponses({ @ApiResponse(code = 200, message = "Nice!", response = Account.class),
 			@ApiResponse(code = 400, message = "Invalid ID supplied", response = Account.class),
 			@ApiResponse(code = 404, message = "Pet not found", response = Account.class) })ATION_JSON_VALUE) */
-	@ResponseBody
+	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Timed
 	public ResponseEntity<List<AccountTO>> list() {
 		List<AccountTO> accounts = accountService.getAll();
@@ -60,6 +60,14 @@ public class AccountResource {
 	public ResponseEntity<AccountTO> add(@RequestBody AccountTO account) {
 		AccountTO saved = accountService.save(account);
 		return new ResponseEntity<>(saved, HttpStatus.CREATED);
+	}
+	
+	@RequestMapping(value = "/find-by-name/{name}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	@Timed
+	public ResponseEntity<AccountTO> getByName(@PathVariable("name") String name) {
+		AccountTO saved = accountService.findByName(name);
+		return new ResponseEntity<>(saved, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)

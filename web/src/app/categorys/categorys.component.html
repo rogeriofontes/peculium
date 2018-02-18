@@ -1,0 +1,46 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Striped Table with Hover</h4>
+                        <p class="category">Here is a subtitle for this table</p>
+                    </div>
+                    <div class="pesquisar">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input value="" id="nameCategory" type="text" class="validate" [(ngModel)]="name" #categoryInput>
+                                <label class="active">Pesquisar Category</label>
+                            </div>
+                        </div>
+
+                        <button class="btn waves-effect waves-light pull-right btnCategory" (click)="get()">Cancelar</button>
+                        <button class="btn waves-effect waves-light pull-right btnCategory" (click)="getByName(categoryInput.value)">Pesquisar</button>
+                        <button class="btn waves-effect waves-light pull-right btnCategory" routerLink="/category-form">Cadastrar Category</button>
+
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Name:</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let category of categorys">
+                                    <td>{{ category.name }}</td>
+                                    <td>
+                                        <button class="large material-icons" style="font-size:25px" alt="Editar" [routerLink]="['/category-form', category.id]">mode_edit</button>
+                                        <button class="large material-icons" style="font-size:25px" alt="Excluir" (click)="delete(category)">delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

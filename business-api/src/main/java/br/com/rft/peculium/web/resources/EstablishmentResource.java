@@ -53,6 +53,15 @@ public class EstablishmentResource {
 		EstablishmentTO establishment = establishmentService.find(id);
 		return new ResponseEntity<>(establishment, HttpStatus.OK);
 	}
+	
+	
+	@RequestMapping(value = "/find-by-name/{name}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	@Timed
+	public ResponseEntity<EstablishmentTO> getByName(@PathVariable("name") String name) {
+		EstablishmentTO plate = establishmentService.findByName(name);
+		return new ResponseEntity<>(plate, HttpStatus.OK);
+	}
 
 	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody

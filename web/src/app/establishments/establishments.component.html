@@ -1,0 +1,46 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Striped Table with Hover</h4>
+                        <p class="establishment">Here is a subtitle for this table</p>
+                    </div>
+                    <div class="pesquisar">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input value="" id="nameEstablishment" type="text" class="validate" [(ngModel)]="name" #establishmentInput>
+                                <label class="active">Pesquisar Establishment</label>
+                            </div>
+                        </div>
+
+                        <button class="btn waves-effect waves-light pull-right btnEstablishment" (click)="get()">Cancelar</button>
+                        <button class="btn waves-effect waves-light pull-right btnEstablishment" (click)="getByName(establishmentInput.value)">Pesquisar</button>
+                        <button class="btn waves-effect waves-light pull-right btnEstablishment" routerLink="/establishment-form">Cadastrar Establishment</button>
+
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Name:</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let establishment of establishments">
+                                    <td>{{ establishment.name }}</td>
+                                    <td>
+                                        <button class="large material-icons" style="font-size:25px" alt="Editar" [routerLink]="['/establishment-form', establishment.id]">mode_edit</button>
+                                        <button class="large material-icons" style="font-size:25px" alt="Excluir" (click)="delete(establishment)">delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

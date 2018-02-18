@@ -37,7 +37,7 @@ public class CityResource {
 	@ApiResponses({ @ApiResponse(code = 200, message = "Nice!", response = City.class),
 			@ApiResponse(code = 400, message = "Invalid ID supplied", response = City.class),
 			@ApiResponse(code = 404, message = "Pet not found", response = City.class) })ATION_JSON_VALUE) */
-	@ResponseBody
+	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Timed
 	public ResponseEntity<List<CityTO>> list() {
 		List<CityTO> citys = cityService.getAll();

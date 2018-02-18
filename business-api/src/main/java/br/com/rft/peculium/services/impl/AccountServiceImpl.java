@@ -64,6 +64,12 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
+	public AccountTO findByName(String name) {
+		Account result = accountRepository.findByName(name);
+		return conversionService.convert(result, AccountTO.class);
+	}
+	
+	@Override
 	@Cacheable("accountsInCache")
 	public List<AccountTO> getAll() {
 		List<AccountTO> tos = new ArrayList<>();

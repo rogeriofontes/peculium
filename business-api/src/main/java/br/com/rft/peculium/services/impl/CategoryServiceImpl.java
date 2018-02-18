@@ -62,6 +62,12 @@ public class CategoryServiceImpl implements CategoryService {
 		Category result = categoryRepository.findOne(id);
 		return conversionService.convert(result, CategoryTO.class);
 	}
+	
+	@Override
+	public CategoryTO findByName(String name) {
+		Category result = categoryRepository.findByName(name);
+		return conversionService.convert(result, CategoryTO.class);
+	}
 
 	@Override
 	@Cacheable("categorysInCache")

@@ -1,0 +1,47 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Conta:</h4>
+                    </div>
+                    <div class="content">
+                        <form class="col s12" [formGroup]="myForm" novalidate (ngSubmit)="onSubmit()">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Conta:</label>
+                                        <input type="text" id="name" [(ngModel)]="account.name" class="form-control" placeholder="Home Address" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Mes:</label>
+                                        <input type="text" id="month" [(ngModel)]="account.month" class="form-control" placeholder="Home Address" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Saldo:</label>
+                                        <input type="text" id="balance" [(ngModel)]="account.balance" class="form-control" placeholder="Home Address" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-info btn-fill pull-right">Cadastrar</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
