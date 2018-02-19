@@ -224,7 +224,6 @@ CREATE TABLE IF NOT EXISTS `peculium`.`movement` (
   `category_id` bigint NOT NULL,
   `account_id` bigint NOT NULL,
   `establishment_id` bigint NOT NULL,
-  `user_id` bigint NOT NULL,
   `create_by` VARCHAR(255) NULL,
   `created_date` TIMESTAMP NULL,
   `last_modified_by` VARCHAR(255) NULL,
@@ -233,7 +232,6 @@ CREATE TABLE IF NOT EXISTS `peculium`.`movement` (
   INDEX `fk_movement_category1_idx` (`category_id` ASC),
   INDEX `fk_movement_account1_idx` (`account_id` ASC),
   INDEX `fk_movement_Establishment1_idx` (`Establishment_id` ASC),
-  INDEX `fk_movement_user1_idx` (`user_id` ASC),
   CONSTRAINT `fk_movement_category1`
     FOREIGN KEY (`category_id`)
     REFERENCES `peculium`.`category` (`id`)
@@ -247,11 +245,6 @@ CREATE TABLE IF NOT EXISTS `peculium`.`movement` (
   CONSTRAINT `fk_movement_Establishment1`
     FOREIGN KEY (`Establishment_id`)
     REFERENCES `peculium`.`establishment` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_movement_user1`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `peculium`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

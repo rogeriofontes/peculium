@@ -22,7 +22,8 @@ import lombok.ToString;
 @Entity
 @Table(name = "movement")
 @EqualsAndHashCode(callSuper = true)
-@ToString(callSuper = true, of = { "name", "date", "value", "interest", "totalValue", "portion", "portionTotal", "category", "account", "establishment" })
+@ToString(callSuper = true, of = { "name", "date", "value", "interest", "totalValue", "portion", "portionTotal",
+		"category", "account", "establishment" })
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -68,7 +69,7 @@ public class Movement extends AudityEntity {
 	@ManyToOne
 	@JoinColumn(name = "establishment_id")
 	private Establishment establishment;
-	
+
 	public void update(Movement movement) {
 		this.name = movement.getName();
 		this.date = movement.getDate();

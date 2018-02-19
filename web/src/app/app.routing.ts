@@ -1,3 +1,5 @@
+import { MovementsFormComponent } from './movements/movements-form/movements-form.component';
+import { MovementsComponent } from './movements/movements.component';
 import { EstablishmentsComponent } from './establishments/establishments.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { AccountsFormComponent } from './accounts/accounts-form/accounts-form.component';
@@ -29,6 +31,9 @@ const routes: Routes =[
     { path: 'establishment',            component: EstablishmentsComponent },
     { path: 'establishment-form',       component: EstablishmentsFormComponent },
     { path: 'establishment-form/:id',   component: EstablishmentsFormComponent },
+    { path: 'movement',                 component: MovementsComponent },
+    { path: 'movement-form',            component: MovementsFormComponent },
+    { path: 'movement-form/:id',        component: MovementsFormComponent },
     { path: 'user',                     component: UserComponent },
     { path: 'table',                    component: TablesComponent },
     { path: 'typography',               component: TypographyComponent },

@@ -35,8 +35,8 @@
                                     <td>{{ account.month }}</td>
                                     <td>{{ account.balance }}</td>
                                     <td>
-                                        <button class="large material-icons" style="font-size:25px" alt="Editar" [routerLink]="['/account-form', account.id]">mode_edit</button>
-                                        <button class="large material-icons" style="font-size:25px" alt="Excluir" (click)="delete(account)">delete</button>
+                                        <button class="fal fa-badge-check" style="font-size:25px" alt="Editar" [routerLink]="['/account-form', account.id]">mode_edit</button>
+                                        <button class="fal fa-badge-check" style="font-size:25px" alt="Excluir" (click)="delete(account)">delete</button>
                                     </td>
                                 </tr>
                             </tbody>

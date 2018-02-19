@@ -24,7 +24,7 @@ public class MovementTOConverter implements Converter<Movement, MovementTO> {
 		target.setCategory(source.getCategory());
 		target.setAccount(source.getAccount());
 		target.setEstablishment(source.getEstablishment());
-
+		//target.setUser(source.getUser());
 		return target;
 	}
 

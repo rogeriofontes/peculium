@@ -26,6 +26,9 @@ public class MovementConverter implements Converter<MovementTO, Movement> {
 		target.setCategory(source.getCategory());
 		target.setAccount(source.getAccount());
 		target.setEstablishment(source.getEstablishment());
+		
+		//User resultUser = userService.findByUsername(SecurityUtils.getCurrentLogin());
+		//target.setUser(resultUser);
 		target.setCreateBy("root@localhost.com"); //TODO buscar dados do Audity
 		target.setCreatedDate(new Date()); //TODO buscar dados do Audity
 

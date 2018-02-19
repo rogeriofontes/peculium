@@ -10,6 +10,7 @@ import javax.persistence.TemporalType;
 import br.com.rft.peculium.models.Account;
 import br.com.rft.peculium.models.Category;
 import br.com.rft.peculium.models.Establishment;
+import br.com.rft.peculium.models.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -74,5 +75,9 @@ public class MovementTO implements Serializable {
 	@Getter
 	@Setter
 	private Establishment establishment;
+	
+	@Getter
+	@Setter
+	private User user;
 
 }

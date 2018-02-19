@@ -40,7 +40,7 @@ export class EstablishmentsFormComponent implements OnInit {
          this.locations = result
           console.log(this.locations);
      });
- }
+  }
 
   ngOnInit() {
     this.getLocations();

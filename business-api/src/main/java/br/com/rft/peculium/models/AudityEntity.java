@@ -59,7 +59,7 @@ import lombok.Setter;
 	@JsonIgnore
 	@Getter
 	@Setter
-	private String createBy;
+	private String createBy = "root@localhost.local";
 
 	@LastModifiedDate
 	@Column(name = "last_modified_date")
@@ -67,12 +67,12 @@ import lombok.Setter;
 	@Temporal(TemporalType.TIMESTAMP)
 	@Getter
 	@Setter
-	private Date lastModifiedDate;
+	private Date lastModifiedDate = DateUtil.localDateTimeToDate(LocalDateTime.now());
 
 	@LastModifiedBy
 	@Column(name = "last_modified_by")
 	@JsonIgnore
 	@Getter
 	@Setter
-	private String lastModifiedBy;
+	private String lastModifiedBy = "root@localhost.local"; 
 }

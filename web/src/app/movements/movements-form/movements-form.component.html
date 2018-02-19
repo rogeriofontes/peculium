@@ -1,0 +1,117 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Movimentação:</h4>
+                    </div>
+                    <div class="content">
+                        <form class="col s12" [formGroup]="myForm" novalidate (ngSubmit)="onSubmit()">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Selecione o category</label>
+                                        <select class="form-control" [(ngModel)]="movement.category" [ngModelOptions]="{standalone: true}" (input)="onInput($event)">
+                                                <option [ngValue]="null" disabled selected>Escolha o tipo de category</option>
+                                                  <option [ngValue]="category.id == movement.category?.id ? movement.category : category"
+                                                *ngFor="let category of categorys; trackBy: trackMovementById">  
+                                                    {{ category.name }}
+                                                </option>
+                                            </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Selecione o account</label>
+                                        <select class="form-control" [(ngModel)]="movement.account" [ngModelOptions]="{standalone: true}" (input)="onInput($event)">
+                                                <option [ngValue]="null" disabled selected>Escolha o tipo de location</option>
+                                                  <option [ngValue]="account.id == movement.account?.id ? movement.account : account"
+                                                *ngFor="let account of accounts; trackBy: trackMovementById">  
+                                                    {{ account.name }}
+                                                </option>
+                                            </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Selecione o establishment</label>
+                                        <select class="form-control" [(ngModel)]="movement.establishment" [ngModelOptions]="{standalone: true}" (input)="onInput($event)">
+                                                <option [ngValue]="null" disabled selected>Escolha o tipo de locestablishmentation</option>
+                                                  <option [ngValue]="establishment.id == movement.establishment?.id ? movement.establishment : establishment"
+                                                *ngFor="let establishment of establishments; trackBy: trackMovementById">  
+                                                    {{ establishment.name }}
+                                                </option>
+                                            </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Name:</label>
+                                        <input type="text" id="name" [(ngModel)]="movement.name" class="form-control" placeholder="Home Name" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>date:</label>
+                                        <input type="text" id="date" [(ngModel)]="movement.date" class="form-control" placeholder="Home Name" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>value:</label>
+                                        <input type="text" id="value" [(ngModel)]="movement.value" class="form-control" placeholder="Home Name" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>interest:</label>
+                                        <input type="text" id="interest" [(ngModel)]="movement.interest" class="form-control" placeholder="Home Name" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>totalValue:</label>
+                                        <input type="text" id="totalValue" [(ngModel)]="movement.totalValue" class="form-control" placeholder="Home Name" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>portion:</label>
+                                        <input type="text" id="portion" [(ngModel)]="movement.portion" class="form-control" placeholder="Home Name" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>portionTotal:</label>
+                                        <input type="text" id="portionTotal" [(ngModel)]="movement.portionTotal" class="form-control" placeholder="Home Name" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-info btn-fill pull-right">Cadastrar</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

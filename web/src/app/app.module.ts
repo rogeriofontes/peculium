@@ -31,6 +31,9 @@ import { AccountsService } from './accounts/accounts.service';
 import { EstablishmentsComponent } from './establishments/establishments.component';
 import { EstablishmentsFormComponent } from './establishments/establishments-form/establishments-form.component';
 import { LocationService } from './addresses/location.service';
+import { MovementsComponent } from './movements/movements.component';
+import { MovementsFormComponent } from './movements/movements-form/movements-form.component';
+import { MovementsService } from './movements/movements.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,9 @@ import { LocationService } from './addresses/location.service';
     AccountsComponent,
     AccountsFormComponent,
     EstablishmentsComponent,
-    EstablishmentsFormComponent
+    EstablishmentsFormComponent,
+    MovementsComponent,
+    MovementsFormComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +68,7 @@ import { LocationService } from './addresses/location.service';
     ReactiveFormsModule,
     CommonModule
   ],
-  providers: [CategorysService, AccountsService, LocationService, EstablishmentsService],  
+  providers: [CategorysService, AccountsService, LocationService, EstablishmentsService, MovementsService],  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

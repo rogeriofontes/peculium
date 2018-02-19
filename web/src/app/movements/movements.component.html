@@ -1,0 +1,50 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Striped Table with Hover</h4>
+                        <p class="movement">Here is a subtitle for this table</p>
+                    </div>
+                    <div class="pesquisar">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input value="" id="nameMovement" type="text" class="validate" [(ngModel)]="name" #movementInput>
+                                <label class="active">Pesquisar movement</label>
+                            </div>
+                        </div>
+
+                        <button class="btn waves-effect waves-light pull-right btnMovement" (click)="get()">Cancelar</button>
+                        <button class="btn waves-effect waves-light pull-right btnMovement" (click)="getByName(movementInput.value)">Pesquisar</button>
+                        <button class="btn waves-effect waves-light pull-right btnMovement" routerLink="/movement-form">Cadastrar movement</button>
+
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nome:</th>
+                                    <th>Date:</th>
+                                    <th>Valor:</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let movement of movements">
+                                    <td>{{ movement.name }}</td>
+                                    <td>{{ movement.date }}</td>
+                                    <td>{{ movement.value }}</td>
+                                    <td>
+                                        <button class="large material-icons" style="font-size:25px" alt="Editar" [routerLink]="['/movement-form', movement.id]">mode_edit</button>
+                                        <button class="large material-icons" style="font-size:25px" alt="Excluir" (click)="delete(movement)">delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
